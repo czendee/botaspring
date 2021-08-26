@@ -14,4 +14,12 @@ public class LibroController {
     model.addAttribute("librooos","este es el valor"); 
     return "librosss/lista";
   }
+  
+//    @GetMapping(value={"/librocual",produces=MediaType.APPLICATION_JSON_VALUE})
+  @GetMapping("/libroscual")
+  public String traeLibrocuales(  @RequestParam(name="nombre", required=false, defaultValue="mundial") String nombrito, Model model){
+    System.out.println("traeLibrocuales llamado ...3");
+    model.addAttribute("librooos","este es el valor"+nombrito); 
+    return "librosss/lista";
+  }
 }
