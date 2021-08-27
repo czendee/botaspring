@@ -1,6 +1,6 @@
-package com.youtochi.aprende001.service;
+package com.youtochi.botas001.service;
 
-import com.youtochi.aprende001.model.FuenteDatos;
+import com.youtochi.botas001.model.FuenteDatos;
 import org.springframework.stereotype.Service;
 
 @Service
