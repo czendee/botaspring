@@ -1,9 +1,9 @@
-package com.youtochi.aprende001.api.controller;
+package com.youtochi.botas001.api.controller;
 
-import com.youtochi.aprende001.model.FuenteDatos;
-import com.youtochi.aprende001.model.FuenteDatosRequest;
-import com.youtochi.aprende001.model.Librito;
-import com.youtochi.aprende001.service.FuenteDatosService;
+import com.youtochi.botas001.model.FuenteDatos;
+import com.youtochi.botas001.model.FuenteDatosRequest;
+import com.youtochi.botas001.model.Librito;
+import com.youtochi.botas001.service.FuenteDatosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
