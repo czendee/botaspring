@@ -1,21 +1,17 @@
 package com.youtochi.aprende001.model;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "user")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class FuenteDatosRequest {
-  @XmlElement
-  private String login;
+public class Librito {
+  String nombre;
+  String valor;
   
-  @XmlElement
-  private String password;
+  public Librito(String nombre, String valor) { this.nombre = nombre; this.valor = valor; } 
+  public Librito() { }
+  public String getNombre() { return nombre; }
+  public void setNombre(String nombre) { this.nombre = nombre; }
+  public String getValor() { return valor; }
+  public void setValor(String valor) { this.valor = valor; }
   
-  public FuenteDatosRequest() { }
-  public String getLogin() { return login; }
-  public void setLogin(String login) { this.login = login; }
-  public String getPassword() { return password; }
-  public void setPassword(String password) { this.password = password; }
+  @Override public String toString() { 
+    return "Librito{" + "nombre='" + nombre + '\'' + ", valor='" + valor + '\'' + '}';
+  }
 }
