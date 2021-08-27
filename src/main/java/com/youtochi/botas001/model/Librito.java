@@ -1,4 +1,4 @@
-package com.youtochi.aprende001.model;
+package com.youtochi.botas001.model;
 
 public class Librito {
   String nombre;
