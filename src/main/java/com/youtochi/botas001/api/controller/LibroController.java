@@ -11,7 +11,7 @@ public class LibroController {
   // @RequestMapping("/libroson")
   @GetMapping("/libroson")
   public String traeLibrosones(Model model){
-    System.out.println("traeLibrosones llamado ...3");
+    System.out.println("LibroController -traeLibrosones llamado ...4");
     model.addAttribute("librooos","este es el valor"); 
     return "librosss/lista";
   }
@@ -19,7 +19,7 @@ public class LibroController {
 //    @GetMapping(value={"/librocual",produces=MediaType.APPLICATION_JSON_VALUE})
   @GetMapping("/libroscual")
   public String traeLibrocuales(  @RequestParam(name="nombre", required=false, defaultValue="mundial") String nombrito, Model model){
-    System.out.println("traeLibrocuales llamado ...3");
+    System.out.println("LibroController -traeLibrocuales llamado ...4");
     model.addAttribute("librooos","este es el valor"+nombrito); 
     return "librosss/lista";
   }
