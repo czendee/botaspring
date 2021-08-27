@@ -2,6 +2,7 @@ package com.youtochi.botas001;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages={"com.youtochi"}) //added this line,as in the localhost intellij it restcontrollers work ok, but in heroku i was getting 404
