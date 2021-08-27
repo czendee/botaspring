@@ -1,4 +1,4 @@
-package com.youtochi.aprende001.model;
+package com.youtochi.botas001.model;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
