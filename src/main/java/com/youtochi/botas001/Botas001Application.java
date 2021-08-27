@@ -3,10 +3,10 @@ package com.youtochi.botas001;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.youtochi.botas001.api.controller.LibroRestController;
-import org.springframework.annotation.ComponentScan;
+//import org.springframework.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan (basePackageClasses=LibroRestController.class)
+//@ComponentScan (basePackageClasses=LibroRestController.class)
 public class Botas001Application  {
 
 	public static void main(String[] args) {
