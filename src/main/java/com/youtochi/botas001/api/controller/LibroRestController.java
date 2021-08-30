@@ -61,6 +61,9 @@ public class LibroRestController {
   @Autowired
   private FuenteDatosService fuenteDatosService;
   
+    @Autowired
+  private DbFuenteDatosService dbFuenteDatosService;
+  
   @RequestMapping(value={"fuente.json","fuente"},
                   method=RequestMethod.POST,
                   consumes ={"application/json","application/xml"},
@@ -86,7 +89,7 @@ public class LibroRestController {
   @GetMapping("/dbfuentes")
   public ResponseEntity<?> getAllFuentes( ){
       Map<String,Object> response = new HashMap <String, Object>();
-      List<DbFuenteDatos> fuentes = this.fuenteDatosService.findAll();
+      List<DbFuenteDatos> fuentes = this.dbFuenteDatosService.findAll();
       response.put("fuentesdatos",fuentes);
       return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
   }
