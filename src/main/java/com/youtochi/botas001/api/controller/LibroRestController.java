@@ -7,6 +7,7 @@ import com.youtochi.botas001.service.FuenteDatosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,4 +77,15 @@ public class LibroRestController {
     System.out.println("LibroRestController --- obtenFuenteDatosXml llamado ...5");
     return this.fuenteDatosService.encuentraLaFuenteDatos(fuenteDatosRequest.getLogin(),fuenteDatosRequest.getPassword());
   }
+  
+  /// mongo
+  
+  @GetMapping("/dbfuentes")
+  public ResponseEntity<?> getAllFuentes( ){
+      Map<String,Object> response = new HashMap <String, object>();
+      List<DbFuenteDatos> fuentes = this.fuenteDatosService.findAll();
+      response.put("fuentesdatos",fuentes);
+      return new ResponseEntity< Map <String,Object>> (response,HTTPstaus.Ok );
+  }
+  
 }
