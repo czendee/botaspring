@@ -1,16 +1,21 @@
 package com.youtochi.botas001.api.controller;
 
 import com.youtochi.botas001.model.FuenteDatos;
+import com.youtochi.botas001.model.DbFuenteDatos;
 import com.youtochi.botas001.model.FuenteDatosRequest;
 import com.youtochi.botas001.model.Librito;
 import com.youtochi.botas001.service.FuenteDatosService;
+import com.youtochi.botas001.service.DbFuenteDatosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/api")
@@ -57,6 +62,9 @@ public class LibroRestController {
   @Autowired
   private FuenteDatosService fuenteDatosService;
   
+    @Autowired
+  private DbFuenteDatosService dbFuenteDatosService;
+  
   @RequestMapping(value={"fuente.json","fuente"},
                   method=RequestMethod.POST,
                   consumes ={"application/json","application/xml"},
@@ -76,4 +84,15 @@ public class LibroRestController {
     System.out.println("LibroRestController --- obtenFuenteDatosXml llamado ...5");
     return this.fuenteDatosService.encuentraLaFuenteDatos(fuenteDatosRequest.getLogin(),fuenteDatosRequest.getPassword());
   }
+  
+  /// mongo
+  
+  @GetMapping("/dbfuentes")
+  public ResponseEntity<?> getAllFuentes( ){
+      Map<String,Object> response = new HashMap <String, Object>();
+      List<DbFuenteDatos> fuentes = this.dbFuenteDatosService.findAll();
+      response.put("fuentesdatos",fuentes);
+      return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
+  }
+  
 }
