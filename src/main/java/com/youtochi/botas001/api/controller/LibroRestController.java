@@ -1,6 +1,7 @@
 package com.youtochi.botas001.api.controller;
 
 import com.youtochi.botas001.model.FuenteDatos;
+import com.youtochi.botas001.model.DbFuenteDatos;
 import com.youtochi.botas001.model.FuenteDatosRequest;
 import com.youtochi.botas001.model.Librito;
 import com.youtochi.botas001.service.FuenteDatosService;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/api")
@@ -82,7 +85,7 @@ public class LibroRestController {
   
   @GetMapping("/dbfuentes")
   public ResponseEntity<?> getAllFuentes( ){
-      Map<String,Object> response = new HashMap <String, object>();
+      Map<String,Object> response = new HashMap <String, Object>();
       List<DbFuenteDatos> fuentes = this.fuenteDatosService.findAll();
       response.put("fuentesdatos",fuentes);
       return new ResponseEntity< Map <String,Object>> (response,HTTPstaus.Ok );
