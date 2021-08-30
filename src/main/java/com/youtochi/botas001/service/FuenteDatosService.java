@@ -4,6 +4,7 @@ import com.youtochi.botas001.model.FuenteDatos;
 import com.youtochi.botas001.repository.DbFuenteDatosRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
 @Service
 public class FuenteDatosService {
@@ -18,7 +19,7 @@ public class FuenteDatosService {
   @Autowired
   public DbFuenteDatosRepository dbFuenteDatosRepository;
   
-  @Overrride 
+  @Override 
   public List<FuenteDatos> findAll();
   
 }
