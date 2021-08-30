@@ -1,3 +1,6 @@
+package com.youtochi.botas001;
+
+import java.io.Serializable;
 
 @RedisHash("#scrumblr#-room:luna25-cards")
 public class CardRedis implements Serializable {
