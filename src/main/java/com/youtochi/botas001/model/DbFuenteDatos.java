@@ -1,6 +1,7 @@
 package com.youtochi.botas001.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document (collection="youtochidatasource")
 public class DbFuenteDatos {
