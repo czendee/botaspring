@@ -20,6 +20,6 @@ public class FuenteDatosService {
   public DbFuenteDatosRepository dbFuenteDatosRepository;
   
   @Override 
-  public List<FuenteDatos> findAll();
+  public List<DbFuenteDatos> findAll();
   
 }
