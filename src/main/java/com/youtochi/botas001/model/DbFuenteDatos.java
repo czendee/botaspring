@@ -2,7 +2,7 @@ package com.youtochi.botas001.model;
 
 import org.springframework.data.annotation.Id;
 
-
+@Document (collection="youtochidatasource")
 public class DbFuenteDatos {
 
   @Id
