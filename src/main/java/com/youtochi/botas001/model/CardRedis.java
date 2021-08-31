@@ -23,5 +23,5 @@ public class CardRedis implements Serializable {
   public String getColor(){ return color;}
   public String getX(){ return x;}
   public String getY(){ return y;}
-  public CardRedis ();
+
 }
