@@ -1,4 +1,4 @@
-package com.youtochi.botas001;
+package com.youtochi.botas001.model;
 
 import java.io.Serializable;
 
