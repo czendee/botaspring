@@ -5,7 +5,7 @@ import com.youtochi.botas001.model.DbFuenteDatos;
 import com.youtochi.botas001.model.FuenteDatosRequest;
 import com.youtochi.botas001.model.Librito;
 import com.youtochi.botas001.model.CardRedis;
-import com.youtochi.botas001.repository.RedisCardRepository;
+import com.youtochi.botas001.repository.CardRedisRepository;
 import com.youtochi.botas001.service.FuenteDatosService;
 import com.youtochi.botas001.service.DbFuenteDatosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,12 +99,12 @@ public class LibroRestController {
  
     /// redis
   @Autowired
-  private RedisCardRepository redisCardRespository;
+  private CardRedisRepository cardRedisRespository;
   
   @GetMapping("/rediscards")
   public ResponseEntity<?> getAllCards( ){
       Map<String,Object> response = new HashMap <String, Object>();
-      List<CardRedis> fuentes = this.redisCardRespository.findAll();
+      List<CardRedis> fuentes = this.cardRedisRespository.findAll();
       response.put("tarjetas",fuentes);
       return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
     
