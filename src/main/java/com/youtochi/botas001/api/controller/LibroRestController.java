@@ -104,9 +104,15 @@ public class LibroRestController {
   @GetMapping("/rediscards")
   public ResponseEntity<?> getAllCards( ){
       Map<String,Object> response = new HashMap <String, Object>();
-      List<CardRedis> fuentes = this.cardRedisRespository.findAll();
-      response.put("tarjetas",fuentes);
-      return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
+//      List<CardRedis> fuentes = this.cardRedisRespository.findAll();
+    //set a new list
+         List<CardRedis> fuentes= new ArrayList();
+    //the results are obtained in a iterable
+    //and each one of them are added into the new list
+         cardRedisRespository.findAll().forEach(fuentes::add);
+    
+         response.put("tarjetas",fuentes);
+        return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
     
     
       //  List<Student> students = new ArrayList<>();
