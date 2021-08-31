@@ -6,6 +6,7 @@ import com.youtochi.botas001.api.controller.LibroRestController;
 //import org.springframework.annotation.ComponentScan;
 
 @SpringBootApplication
+@EnableAutoConfiguration
 //@ComponentScan (basePackageClasses=LibroRestController.class)
 public class Botas001Application  {
 
