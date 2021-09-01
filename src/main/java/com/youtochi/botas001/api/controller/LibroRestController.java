@@ -169,4 +169,9 @@ public class LibroRestController {
        this.producerService.sendMessage(message);
     }
   
+      @GetMapping(value = "/publishstudentget")
+    public void sendMessageToKafkaTopicGet(@RequestParam("message") String message) {
+       this.producerService.sendMessage(message);
+    }
+  
 }
