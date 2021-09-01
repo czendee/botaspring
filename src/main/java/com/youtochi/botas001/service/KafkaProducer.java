@@ -11,6 +11,7 @@ import org.springframework.kafka.support.converter.RecordMessageConverter;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
 import java.lang.reflect.Type;
+import org.springframework.beans.factory.annotation.Value;
 
 @Service
 public class KafkaProducer {
