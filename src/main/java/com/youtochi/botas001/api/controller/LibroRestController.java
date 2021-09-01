@@ -12,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
+import com.youtochi.botas001.model.StudentTest;
+import com.youtochi.botas001.repository.StudentTestRepository;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -119,6 +123,40 @@ public class LibroRestController {
       //studentRepository.findAll().forEach(students::add);
   }
 
+  
+      @Autowired
+    private StudentTestRepository studentRepository;
+  
+
+    @PostMapping("/students")
+    public ResponseEntity<StudentTest> createStudent(@RequestBody StudentTest student) {
+        Student savedStudent = studentRepository.save(student);
+        return new ResponseEntity<>(savedStudent, HttpStatus.CREATED);
+    }
+    @PutMapping("/student/{id}")
+    public ResponseEntity<StudentTest> updateStudent(@PathVariable(name = "id") String id, @RequestBody StudentTest student) {
+        Optional<StudentTest> std = studentRepository.findById(id);
+        if (std.isPresent()) {
+            StudentTest studentDB = std.get();
+            studentDB.setGrade(student.getGrade());
+            studentDB.setName(student.getName());
+            StudentTest updatedStudent = studentRepository.save(studentDB);
+            return new ResponseEntity<>(updatedStudent, HttpStatus.CREATED);
+        }
+        return null;
+    }
+    
+    @GetMapping("/students")
+    public ResponseEntity<List<StudentTest>> getStudents() {
+        List<StudentTest> students = new ArrayList<>();
+        studentRepository.findAll().forEach(students::add);
+        return new ResponseEntity<>(students, HttpStatus.OK);
+    }
+    @DeleteMapping("/student/{id}")
+    public ResponseEntity<String> deleteStudent(@PathVariable(name = "id") String id) {
+        studentRepository.deleteById(id);
+        return new ResponseEntity<>("Student with id:" + id + " deleted successfully", HttpStatus.OK);
+    }
   
   
 }
