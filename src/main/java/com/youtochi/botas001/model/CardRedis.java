@@ -12,8 +12,8 @@ public class CardRedis implements Serializable {
     private String id;
     private String text;
     private String colour;
-    private String x;
-    private String y;
+    private double x;
+    private double y;
   
   public void setId(){this.id=id;}
   public void setText(){this.text=text;}
@@ -24,7 +24,7 @@ public class CardRedis implements Serializable {
   public String getId(){ return id;}
   public String getText(){ return text;}
   public String getColour(){ return colour;}
-  public String getX(){ return x;}
-  public String getY(){ return y;}
+  public double getX(){ return x;}
+  public double getY(){ return y;}
 
 }
