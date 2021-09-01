@@ -8,6 +8,8 @@ import com.youtochi.botas001.model.CardRedis;
 import com.youtochi.botas001.repository.CardRedisRepository;
 import com.youtochi.botas001.service.FuenteDatosService;
 import com.youtochi.botas001.service.DbFuenteDatosService;
+import com.youtochi.botas001.service.KafkaProducer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -159,5 +161,12 @@ public class LibroRestController {
         return new ResponseEntity<>("Student with id:" + id + " deleted successfully", HttpStatus.OK);
     }
   
+      @Autowired
+      private KafkaProducer producerService;
+  
+    @PostMapping(value = "/publishstudent")
+    public void sendMessageToKafkaTopic(@RequestParam("message") String message) {
+       this.producerService.sendMessage(message);
+    }
   
 }
