@@ -15,14 +15,20 @@ import java.lang.reflect.Type;
 @Service
 public class KafkaProducer {
 
-  private static final String TOPIC = "students";
+//  private static final String TOPIC = "students";
   
   @Autowired
   private KafkaTemplate kafkaTemplate;
+  
+  @Value("${cloudkarafka.topic}")
+  private String topic;
     
   public void sendMessage(String message) {
     logger.info(String.format("#### -> Producing message -> %s", message));
-    this.kafkaTemplate.send(TOPIC, message);
+//    this.kafkaTemplate.send(TOPIC, message);
+    System.out.println("Before --Sent sample message  " );
+    this.kafkaTemplate.send(topic, message);
+    System.out.println("Despues --Sent sample message [" + message + "] to " + topic);
   }
   
 
