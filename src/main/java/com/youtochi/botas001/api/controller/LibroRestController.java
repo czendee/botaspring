@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import java.util.Map;
 
@@ -130,7 +131,7 @@ public class LibroRestController {
 
     @PostMapping("/students")
     public ResponseEntity<StudentTest> createStudent(@RequestBody StudentTest student) {
-        Student savedStudent = studentRepository.save(student);
+        StudentTest savedStudent = studentRepository.save(student);
         return new ResponseEntity<>(savedStudent, HttpStatus.CREATED);
     }
     @PutMapping("/student/{id}")
