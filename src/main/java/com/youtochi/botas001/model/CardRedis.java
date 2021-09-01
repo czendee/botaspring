@@ -3,7 +3,8 @@ package com.youtochi.botas001.model;
 import java.io.Serializable;
 import org.springframework.data.redis.core.RedisHash;
 
-@RedisHash("#scrumblr#-room:luna25-cards")
+//@RedisHash("#scrumblr#-room:luna25-cards")
+@RedisHash("scrumblr-room:luna25-cards")
 public class CardRedis implements Serializable {
  
     private String id;
