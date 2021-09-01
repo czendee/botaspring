@@ -159,5 +159,9 @@ public class LibroRestController {
         return new ResponseEntity<>("Student with id:" + id + " deleted successfully", HttpStatus.OK);
     }
   
+    @PostMapping(value = "/publishstudent")
+    public void sendMessageToKafkaTopic(@RequestParam("message") String message) {
+       this.producerService.sendMessage(message);
+    }
   
 }
