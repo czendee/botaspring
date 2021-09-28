@@ -141,7 +141,8 @@ public class LibroRestController {
   
       RedisConnection redisConnection = null;
 //      RedisConnectionFactory  redisConnection = null;
-    redisTemplate = RedisConfig.redisTemplate();
+    RedisConfig algo;
+    redisTemplate = algo.redisTemplate();
     try {
         redisConnection = redisTemplate.getConnectionFactory().getConnection();
         ScanOptions options = ScanOptions.scanOptions().match("*card*").count(100).build();
