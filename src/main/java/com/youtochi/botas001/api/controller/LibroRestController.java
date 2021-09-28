@@ -26,6 +26,10 @@ import java.util.Optional;
 
 import java.util.Map;
 
+
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+
 @RestController
 @RequestMapping("/v1/api")
 public class LibroRestController {
@@ -126,6 +130,24 @@ public class LibroRestController {
       //studentRepository.findAll().forEach(students::add);
   }
 
+  @GetMapping("/redislistacards")
+  public ResponseEntity<?> getAllCards( ){
+  
+      RedisConnection redisConnection = null;
+//      RedisConnectionFactory  redisConnection = null;
+    try {
+        redisConnection = redisTemplate.getConnectionFactory().getConnection();
+        ScanOptions options = ScanOptions.scanOptions().match("*card*").count(100).build();
+
+        Cursor c = redisConnection.scan(options);
+        while (c.hasNext()) {
+            logger.info(new String((byte[]) c.next()));
+        }
+    } finally {
+        redisConnection.close(); //Ensure closing this connection.
+    }
+  
+  }  
   
       @Autowired
     private StudentTestRepository studentRepository;
