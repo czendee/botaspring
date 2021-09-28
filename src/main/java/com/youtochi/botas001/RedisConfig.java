@@ -22,7 +22,7 @@ public class RedisConfig {
 
 
 
-	@Bean
+	@Bean(name = "miofriojol")
 	public RedisConnectionFactory redisConnectionFactory() {
 		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
 		jedisPoolConfig.setMaxTotal(10);
