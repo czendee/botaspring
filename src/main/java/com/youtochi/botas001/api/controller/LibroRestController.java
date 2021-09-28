@@ -27,7 +27,8 @@ import java.util.Optional;
 import java.util.Map;
 
 
-import org.springframework.data.redis.core.RedisTemplate;
+//import org.springframework.data.redis.core.RedisTemplate;
+import com.youtochi.botas001.RedisTemplate;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.ScanOptions;
@@ -133,17 +134,18 @@ public class LibroRestController {
   }
 
   @GetMapping("/redislistacards")
-  public ResponseEntity<?> getAllCards( ){
+  public ResponseEntity<?> getAllCardsList( ){
   
       RedisConnection redisConnection = null;
 //      RedisConnectionFactory  redisConnection = null;
+    RedisTemplate<String, String>  redisTemplate = RedisConfig.redisTemplate();
     try {
         redisConnection = redisTemplate.getConnectionFactory().getConnection();
         ScanOptions options = ScanOptions.scanOptions().match("*card*").count(100).build();
 
         Cursor c = redisConnection.scan(options);
         while (c.hasNext()) {
-            logger.info(new String((byte[]) c.next()));
+            System.out.println(new String((byte[]) c.next()));
         }
     } finally {
         redisConnection.close(); //Ensure closing this connection.
@@ -165,8 +167,8 @@ public class LibroRestController {
         Optional<StudentTest> std = studentRepository.findById(id);
         if (std.isPresent()) {
             StudentTest studentDB = std.get();
-            studentDB.setGrade(student.getGrade());
-            studentDB.setName(student.getName());
+//            studentDB.setGrade(student.getGrade());
+//            studentDB.setName(student.getName());
             StudentTest updatedStudent = studentRepository.save(studentDB);
             return new ResponseEntity<>(updatedStudent, HttpStatus.CREATED);
         }
