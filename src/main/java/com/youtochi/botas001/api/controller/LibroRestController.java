@@ -134,7 +134,8 @@ public class LibroRestController {
       //studentRepository.findAll().forEach(students::add);
   }
   
-  private final RedisTemplate<String, String> redisTemplate;
+//  private final RedisTemplate<String, String> redisTemplate;
+    private  RedisTemplate<String, String> redisTemplate;
 
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
