@@ -36,6 +36,7 @@ import org.springframework.data.redis.core.Cursor;
 
 @RestController
 @RequestMapping("/v1/api")
+@Component
 public class LibroRestController {
   
   @GetMapping(value = { "/librojson" },
@@ -143,7 +144,6 @@ public class LibroRestController {
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
       Map<String,Object> response = new HashMap <String, Object>();
-      RedisConnection redisConnection = null;
 
     try {
       
