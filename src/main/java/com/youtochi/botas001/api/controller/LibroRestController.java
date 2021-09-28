@@ -142,7 +142,7 @@ public class LibroRestController {
       Map<String,Object> response = new HashMap <String, Object>();
       RedisConnection redisConnection = null;
 //      RedisConnectionFactory  redisConnection = null;
-    RedisConfig algo = new Redisconfig ();
+    RedisConfig algo = new RedisConfig ();
     redisTemplate = algo.redisTemplate();
     try {
         redisConnection = redisTemplate.getConnectionFactory().getConnection();
