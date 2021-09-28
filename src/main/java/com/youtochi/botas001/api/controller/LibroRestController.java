@@ -28,7 +28,8 @@ import java.util.Map;
 
 
 //import org.springframework.data.redis.core.RedisTemplate;
-import com.youtochi.botas001.RedisConfig;
+import com.youtochi.botas001.RedisConfig.RedisConnectionFactory;
+
 //import org.springframework.data.redis.connection.RedisConnection;
 //import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.ScanOptions;
@@ -36,7 +37,6 @@ import org.springframework.data.redis.core.Cursor;
 
 @RestController
 @RequestMapping("/v1/api")
-@Component
 public class LibroRestController {
   
   @GetMapping(value = { "/librojson" },
@@ -139,7 +139,7 @@ public class LibroRestController {
 //    private  RedisTemplate<String, String> redisTemplate;
 
   	@Autowired
-	  private RedisConnectionFactory  myBean;
+	private RedisConnectionFactory  myBean;
   
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
@@ -161,7 +161,7 @@ public class LibroRestController {
   }  
   
       @Autowired
-    private StudentTestRepository studentRepository;
+     private StudentTestRepository studentRepository;
   
 
     @PostMapping("/students")
