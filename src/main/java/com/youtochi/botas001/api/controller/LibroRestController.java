@@ -27,8 +27,8 @@ import java.util.Optional;
 import java.util.Map;
 
 
-//import org.springframework.data.redis.core.RedisTemplate;
-import com.youtochi.botas001.RedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
+import com.youtochi.botas001.RedisConfig;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.ScanOptions;
