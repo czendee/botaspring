@@ -139,7 +139,7 @@ public class LibroRestController {
 
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
-  
+      Map<String,Object> response = new HashMap <String, Object>();
       RedisConnection redisConnection = null;
 //      RedisConnectionFactory  redisConnection = null;
     RedisConfig algo = new Redisconfig ();
