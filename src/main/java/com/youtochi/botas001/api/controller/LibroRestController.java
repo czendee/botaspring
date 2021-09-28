@@ -32,6 +32,7 @@ import com.youtochi.botas001.RedisConfig;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.data.redis.core.Cursor;
 
 @RestController
 @RequestMapping("/v1/api")
@@ -132,13 +133,15 @@ public class LibroRestController {
       //  List<Student> students = new ArrayList<>();
       //studentRepository.findAll().forEach(students::add);
   }
+  
+  private final RedisTemplate<String, String> redisTemplate;
 
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
   
       RedisConnection redisConnection = null;
 //      RedisConnectionFactory  redisConnection = null;
-    RedisTemplate<String, String>  redisTemplate = RedisConfig.redisTemplate();
+    redisTemplate = RedisConfig.redisTemplate();
     try {
         redisConnection = redisTemplate.getConnectionFactory().getConnection();
         ScanOptions options = ScanOptions.scanOptions().match("*card*").count(100).build();
