@@ -29,9 +29,6 @@ import java.util.Map;
 
 //import org.springframework.data.redis.core.RedisTemplate;
 import com.youtochi.botas001.RedisConfig.RedisConnectionFactory;
-
-//import org.springframework.data.redis.connection.RedisConnection;
-//import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.Cursor;
 
@@ -139,7 +136,7 @@ public class LibroRestController {
 //    private  RedisTemplate<String, String> redisTemplate;
 
   	@Autowired
-	private RedisConnectionFactory  myBean;
+	private miofriojol  myBean;
   
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
