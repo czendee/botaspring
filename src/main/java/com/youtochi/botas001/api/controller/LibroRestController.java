@@ -142,7 +142,7 @@ public class LibroRestController {
   
       RedisConnection redisConnection = null;
 //      RedisConnectionFactory  redisConnection = null;
-    RedisConfig algo;
+    RedisConfig algo = new Redisconfig ();
     redisTemplate = algo.redisTemplate();
     try {
         redisConnection = redisTemplate.getConnectionFactory().getConnection();
@@ -155,7 +155,7 @@ public class LibroRestController {
     } finally {
         redisConnection.close(); //Ensure closing this connection.
     }
-  
+     return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
   }  
   
       @Autowired
