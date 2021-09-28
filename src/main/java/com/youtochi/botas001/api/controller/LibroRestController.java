@@ -137,15 +137,17 @@ public class LibroRestController {
 //  private final RedisTemplate<String, String> redisTemplate;
     private  RedisTemplate<String, String> redisTemplate;
 
+  	@Autowired
+	  private redisTemplate myBean;
+  
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
       Map<String,Object> response = new HashMap <String, Object>();
       RedisConnection redisConnection = null;
-//      RedisConnectionFactory  redisConnection = null;
-    RedisConfig algo = new RedisConfig ();
-    redisTemplate = algo.redisTemplate();
+
     try {
-        redisConnection = redisTemplate.getConnectionFactory().getConnection();
+      
+        redisConnection = myBean.getConnectionFactory().getConnection();
         ScanOptions options = ScanOptions.scanOptions().match("*card*").count(100).build();
 
         Cursor c = redisConnection.scan(options);
