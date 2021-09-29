@@ -150,7 +150,7 @@ public class LibroRestController {
 //       redisConnection = redisTemplate.getConnection();
         ScanOptions options = ScanOptions.scanOptions().match("*card*").count(100).build();
 
-        Cursor c = redisTemplate.getConnection().scan(options);
+        Cursor c = redisTemplate.getConnectionFactory().getConnection.scan(options);
         while (c.hasNext()) {
             System.out.println(new String((byte[]) c.next()));
         }
