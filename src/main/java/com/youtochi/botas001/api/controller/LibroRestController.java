@@ -32,6 +32,7 @@ import java.util.Map;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.connection.RedisConnection;
 
 @RestController
 @RequestMapping("/v1/api")
