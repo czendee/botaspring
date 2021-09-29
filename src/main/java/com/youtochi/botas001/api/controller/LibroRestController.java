@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Optional;
 
 import java.util.Map;
+import java.util.Iterator;
+import java.util.Set;
 
 
 //import org.springframework.data.redis.core.RedisTemplate;
@@ -156,6 +158,14 @@ public class LibroRestController {
         while (c.hasNext()) {
             System.out.println(new String((byte[]) c.next()));
         }
+	    
+Set<String> allAvailableKeys = redisTemplate.keys("*"));
+Iterator<String> iterator = allAvailableKeys.iterator();
+while (iterator.hasNext()) {
+       String key= iterator.next();
+	System.out.println(key);
+       
+}	    
     } finally {
         redisConnection.close(); //Ensure closing this connection.
     }
