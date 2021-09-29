@@ -147,6 +147,8 @@ public class LibroRestController {
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
       Map<String,Object> response = new HashMap <String, Object>();
+	  List<Object> fuentes= new ArrayList();
+
       RedisConnection   redisConnection = null;
     try {
       
@@ -168,9 +170,8 @@ while (iterator.hasNext()) {
 }	    
 	    
 	    
-       Map<String,Object> response = new HashMap <String, Object>();
-	List<Object> fuentes= new ArrayList();
-	    
+       
+		    
 	    
 //Map<Object,Object> map = template.opsForHash().entries("*card*");
 //	    value = map.get("1");
