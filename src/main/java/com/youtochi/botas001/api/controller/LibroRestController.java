@@ -166,6 +166,18 @@ while (iterator.hasNext()) {
 	System.out.println(key);
        
 }	    
+	    
+
+//Map<Object,Object> map = template.opsForHash().entries("*card*");
+//	    value = map.get("1");
+Map<Object,Object> map = template.opsForHash().entries("#scrumblr#-room:/luna50-cards");	    
+
+// classic way, loop a Map
+	for (Map.Entry<String, String> entry : map.entrySet()) {
+		System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+	}	    
+	    
+	    
     } finally {
         redisConnection.close(); //Ensure closing this connection.
     }
