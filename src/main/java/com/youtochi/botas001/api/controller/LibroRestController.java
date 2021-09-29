@@ -145,11 +145,11 @@ public class LibroRestController {
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
       Map<String,Object> response = new HashMap <String, Object>();
-
+      RedisConnection   redisConnection = null;
     try {
       
 //       redisConnection = redisTemplate.getConnection();
-	 RedisConnection   redisConnection = redisTemplate.getConnectionFactory().getConnection();
+	 redisConnection = redisTemplate.getConnectionFactory().getConnection();
         ScanOptions options = ScanOptions.scanOptions().match("*card*").count(100).build();
 
         Cursor c = redisConnection.scan(options);
