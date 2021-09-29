@@ -14,6 +14,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
 @PropertySource("classpath:config/redis.properties")
+@ComponentScan
 public class RedisConfig {
 
 	@Autowired
