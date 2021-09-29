@@ -31,6 +31,7 @@ import java.util.Map;
 //import com.youtochi.botas001.RedisConfig.RedisConnectionFactory;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.RedisTemplate;
 
 @RestController
 @RequestMapping("/v1/api")
@@ -135,8 +136,10 @@ public class LibroRestController {
 //  private final RedisTemplate<String, String> redisTemplate;
 //    private  RedisTemplate<String, String> redisTemplate;
 
-  	@Autowired
-	private miofriojol  myBean;
+//  	@Autowired
+//	private miofriojol  myBean;
+	 @Autowired
+	private RedisTemplate<String, String> redisTemplate;
   
   @GetMapping("/redislistacards")
   public ResponseEntity<?> getAllCardsList( ){
@@ -144,10 +147,10 @@ public class LibroRestController {
 
     try {
       
-        //redisConnection = myBean.getConnection();
+//       redisConnection = redisTemplate.getConnection();
         ScanOptions options = ScanOptions.scanOptions().match("*card*").count(100).build();
 
-        Cursor c = myBean.scan(options);
+        Cursor c = redisTemplate.getConnection().scan(options);
         while (c.hasNext()) {
             System.out.println(new String((byte[]) c.next()));
         }
