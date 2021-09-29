@@ -170,11 +170,14 @@ while (iterator.hasNext()) {
 
 //Map<Object,Object> map = template.opsForHash().entries("*card*");
 //	    value = map.get("1");
-Map<String,String> map = redisTemplate.opsForHash().entries("#scrumblr#-room:/luna50-cards");	    
+Map<Object,Object> map = redisTemplate.opsForHash().entries("#scrumblr#-room:/luna50-cards");	    
 
 // classic way, loop a Map
-	for (Map.Entry<String, String> entry : map.entrySet()) {
-		System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+	for (Map.Entry<Object, Object> entry : map.entrySet()) {
+		String algo1 = (String) entry.getKey();
+		String algo2 = (String) entry.getValue();
+//		System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+		System.out.println("Key : " + algo1 + " Value : " + algo2);
 	}	    
 	    
 	    
