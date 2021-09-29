@@ -182,14 +182,14 @@ Map<Object,Object> map = redisTemplate.opsForHash().entries("#scrumblr#-room:/lu
 		String algo2 = (String) entry.getValue();
 //		System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
 		System.out.println("Key : " + algo1 + " Value : " + algo2);
-		fuentes.add(algo2);
-		
+		fuentes.add(algo2);		
 	}	    
 	    
 	    
     } finally {
         redisConnection.close(); //Ensure closing this connection.
-   response.put("tarjetones",fuentes);
+    }	    
+      response.put("tarjetones",fuentes);
       
      return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
   }  
