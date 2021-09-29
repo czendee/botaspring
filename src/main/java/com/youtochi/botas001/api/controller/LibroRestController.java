@@ -159,7 +159,7 @@ public class LibroRestController {
             System.out.println(new String((byte[]) c.next()));
         }
 	    
-Set<String> allAvailableKeys = redisTemplate.keys("*"));
+Set<String> allAvailableKeys = redisTemplate.keys("*");
 Iterator<String> iterator = allAvailableKeys.iterator();
 while (iterator.hasNext()) {
        String key= iterator.next();
