@@ -238,6 +238,51 @@ Map<Object,Object> map = redisTemplate.opsForHash().entries("#scrumblr#-room:/lu
       
      return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
   }  
+
+	
+@GetMapping("/redisroomallcards/{room}")
+  public ResponseEntity<?> getAllRoomsAllCardsList(@PathVariable(name = "room") String room ){
+      Map<String,Object> response = new HashMap <String, Object>();
+	  //List<Object> fuentes= new ArrayList();
+          Map<String,Object> fuentes = new HashMap <String, Object>();
+      RedisConnection   redisConnection = null;
+    try {
+      
+//       redisConnection = redisTemplate.getConnection();
+	 redisConnection = redisTemplate.getConnectionFactory().getConnection();
+        ScanOptions options = ScanOptions.scanOptions().match(room).count(100).build(); //use the input parameter room to validate the room exists
+
+        Cursor c = redisConnection.scan(options);
+        while (c.hasNext()) {
+		String cualRoom =new String((byte[]) c.next());
+                System.out.println(cualRoom);
+		
+		Map<Object,Object> map = redisTemplate.opsForHash().entries(cualRoom);	    
+                
+		List<Object> jsonroom= new ArrayList();
+		// classic way, loop a Map
+		for (Map.Entry<Object, Object> entry : map.entrySet()) {
+			String algo1 = (String) entry.getKey();
+			String algo2 = (String) entry.getValue();
+	//		System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+			System.out.println("Key : " + algo1 + " Value : " + algo2);
+			jsonroom.add(algo2);
+					
+		}
+		
+		//fuentes.put("cualRoom",jsonroom);
+		fuentes.put(cualRoom,jsonroom);
+        }
+	    
+	    
+    } finally {
+        redisConnection.close(); //Ensure closing this connection.
+    }	    
+      response.put("rooms",fuentes);
+      
+     return new ResponseEntity< Map <String,Object>> (response,HttpStatus.OK );
+  }  
+
 	
       @Autowired
      private StudentTestRepository studentRepository;
