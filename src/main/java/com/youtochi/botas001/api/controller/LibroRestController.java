@@ -250,7 +250,7 @@ Map<Object,Object> map = redisTemplate.opsForHash().entries("#scrumblr#-room:/lu
       
 //       redisConnection = redisTemplate.getConnection();
 	 redisConnection = redisTemplate.getConnectionFactory().getConnection();
-        ScanOptions options = ScanOptions.scanOptions().match(room).count(100).build(); //use the input parameter room to validate the room exists
+        ScanOptions options = ScanOptions.scanOptions().match("*"+room+"*").count(100).build(); //use the input parameter room to validate the room exists
 
         Cursor c = redisConnection.scan(options);
         while (c.hasNext()) {
