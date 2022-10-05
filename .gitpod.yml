@@ -1,5 +1,5 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-  - init: gradle build
-    command: gradle run
+  - init: mvn package
+    command: mvn exec:java
