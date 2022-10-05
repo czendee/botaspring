@@ -1,5 +1,10 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-  - init: mvn package
-    command: mvn exec:java
+  - init: ./mvnw clean install -U -DskipTests
+    command: ./mvnw spring-boot:run
+    name: Run PetClinic app
+
+ports:
+  - port: 8080
+    onOpen: open-preview
