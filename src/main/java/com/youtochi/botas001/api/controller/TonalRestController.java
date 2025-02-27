@@ -25,7 +25,7 @@ import java.util.Set;
 //import 
 
 @RestController
-@RequestMapping("/v1/api")
+@RequestMapping("/v1/api/t/")
 public class TonalRestController {
 
   @GetMapping(value = { "/tonaljson" },
