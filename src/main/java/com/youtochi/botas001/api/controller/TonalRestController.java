@@ -45,10 +45,12 @@ public class TonalRestController {
     System.out.println("LibroRestController --- traeListaLibrojson llamado ...4");
     Librito silibro= new Librito("carlos zendejas","489.00");
     Librito silibro2= new Librito("carlos zendejas","489.00");
+    Librito silibroTonal= new Librito("alfonso jimenez","5689.00");
     List lalista = new ArrayList();
     // return "{'aa':'bb'}";
     lalista.add(silibro);
     lalista.add(silibro2);
+    lalista.add(silibroTonal);
     return lalista;
   }
 
